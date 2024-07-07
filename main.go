@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	VERSION     = "v1.1"
-	AUTHOR      = "开发者：红烧猎人(联系作者:https://blog.enianteam.com/u/sun/content/11)"
-	ADDRESS     = "工具开源地址和使用教程:https://github.com/hslr-s/xiaomi-camera-merge"
+	VERSION     = "v1.2"
+	AUTHOR      = "开发者：darren"
+	ADDRESS     = "工具开源地址和使用教程:https://github.com/hslr-s/xiaomi-camera-merge-darren"
 	ERROR_EMPTY = "empty folder"
 )
 
@@ -150,7 +150,7 @@ func MergeMp4ToMovByHour(dir, outputPath string) (string, error) {
 	}
 	defer os.Remove(filesTxtPath)
 
-	mergeFileName := pathName[8:10] + ".mov"
+	mergeFileName := pathName[8:10] + ".mp4"
 	EchoLog("执行 ffmpeg 指令")
 	// 执行指令 ffmpeg -f concat -i files.txt -c copy !name!.mov
 	if err := ExecCommand(dir, "ffmpeg", "-f", "concat", "-i", "files.txt", "-c", "copy", mergeFileName); err != nil {
