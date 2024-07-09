@@ -15,7 +15,7 @@ import (
 const (
 	VERSION     = "v1.2"
 	AUTHOR      = "开发者：darren"
-	ADDRESS     = "工具开源地址和使用教程:https://github.com/hslr-s/xiaomi-camera-merge-darren"
+	ADDRESS     = "工具开源地址和使用教程:https://github.com/darrenlin18/xiaomi-camera-merge-darren"
 	ERROR_EMPTY = "empty folder"
 )
 
@@ -153,8 +153,10 @@ func MergeMp4ToMovByHour(dir, outputPath string) (string, error) {
 	mergeFileName := pathName[8:10] + ".mp4"
 	EchoLog("执行 ffmpeg 指令")
 	// 执行指令 ffmpeg -f concat -i files.txt -c copy !name!.mov
-	if err := ExecCommand(dir, "ffmpeg", "-f", "concat", "-i", "files.txt", "-c", "copy", mergeFileName); err != nil {
-		return "", err
+	//if err := ExecCommand(dir, "ffmpeg", "-f", "concat", "-i", "files.txt", "-c", "copy", mergeFileName); err != nil {
+	//执行正确指令 ffmpeg -f concat -i files.txt -c:v copy -c:a aac -strict -2 !name!.MP4
+	if err := ExecCommand(dir, "ffmpeg", "-f", "concat", "-i", "files.txt", "-c:v", "copy","-c:a","aac","-strict","-2" mergeFileName); err != nil {
+		return "", err 
 	}
 
 	// 移动文件
