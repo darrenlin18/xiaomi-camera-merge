@@ -11,9 +11,10 @@ echo file %%s >> files.txt
 )
 set /p ms=<"files.txt"
 set name=!name!!ms:~5,2!!ms:~8,2!
-ffmpeg -f concat -i files.txt -c copy !name!.mov
+//ffmpeg -f concat -i files.txt -c copy !name!.mov
+ffmpeg -f concat -i files.txt -c:v copy -c:a aac -strict -2 !name!.MP4
 del files.txt
-echo !name!.mov 已生成。
+echo !name!.mp4 已生成。
 cd ..
 )
 TIMEOUT /T 600
