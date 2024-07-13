@@ -155,7 +155,7 @@ func MergeMp4ToMovByHour(dir, outputPath string) (string, error) {
 	// 执行指令 ffmpeg -f concat -i files.txt -c copy !name!.mov
 	//if err := ExecCommand(dir, "ffmpeg", "-f", "concat", "-i", "files.txt", "-c", "copy", mergeFileName); err != nil {
 	//执行正确指令 ffmpeg -f concat -i files.txt -c:v copy -c:a aac -strict -2 !name!.MP4
-	if err := ExecCommand(dir, "ffmpeg", "-f", "concat", "-i", "files.txt", "-c:v", "copy","-c:a","aac","-strict","-2" mergeFileName); err != nil {
+	if err := ExecCommand(dir, "ffmpeg", "-f", "concat", "-i", "files.txt", "-c:v", "copy", "-c:a", "aac", "-strict", "-2", mergeFileName); err != nil {
 		return "", err 
 	}
 
